@@ -12,22 +12,12 @@ class InfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $data = Info::all();
-	return $data;
-    }
-
+  
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,14 +27,9 @@ class InfoController extends Controller
     public function store(Request $request)
     {
             $info = new Info;
-            
- 
-	       // $cadena = $request->device;
-	//	$cadena +=  $request->hum;
-	//	$cadena += $request->temp;
-		$info->data = $request->getContent();
+            $info->data = json_encode($request->all());
 
-            	$info->save();
+            $info->save();
 
 	 return response()->json($info);
    }
@@ -54,11 +39,7 @@ class InfoController extends Controller
      *
      * @param  \App\Info  $info
      * @return \Illuminate\Http\Response
-     */
-    public function show(Info $info)
-    {
-        //
-    }
+     *
 
     /**
      * Show the form for editing the specified resource.
@@ -66,10 +47,7 @@ class InfoController extends Controller
      * @param  \App\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function edit(Info $info)
-    {
-        //
-    }
+  
 
     /**
      * Update the specified resource in storage.
@@ -78,19 +56,12 @@ class InfoController extends Controller
      * @param  \App\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Info $info)
-    {
-        //
-    }
-
-    /**
+   
+   /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Info $info)
-    {
-        //
-    }
+  
 }

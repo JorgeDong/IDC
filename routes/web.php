@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('data', 'InfoController@store');
+Route::post('/data/store', 'InfoController@store');
+Route::get('/data', 'InfoController@index');
+
