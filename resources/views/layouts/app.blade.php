@@ -248,7 +248,16 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Cerrar Sesión</a>
+                            {{-- <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Cerrar Sesión</a> --}}
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Cerrar Sesión</a>
+                            </form>
                         </div>
                     </div>
 
