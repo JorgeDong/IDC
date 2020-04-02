@@ -15,7 +15,15 @@ class InfoController extends Controller
     public function index()
     {
         $data = Info::all();
-	return $data;
+	   return $data;
+    }
+
+    public function registro_especie(){
+        return view('especie/index');
+    }
+
+    public function mapa(){
+        return view('mapa');
     }
 
     /**
