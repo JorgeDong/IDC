@@ -20,6 +20,19 @@ Route::get('/data', 'InfoController@index');
 Route::get('/registro-especie', 'InfoController@registro_especie');
 Route::get('/mapa', 'InfoController@mapa');
 
+
+
+Route::group(['middleware' => ['auth']], function() {
+     Route::POST('especie/save','InfoController@especie_save');
+     
+     Route::POST('empleados/edit','Catalogs\Employees\EmployeeController@edit');
+     Route::POST('empleados/delete','Catalogs\Employees\EmployeeController@delete');
+     Route::get('empleados/fetch_data', 'Catalogs\Employees\EmployeeController@fetch_data');
+     //Busqueda del select 2 en los roles de empleados
+     Route::get('/select2-load-more', 'Catalogs\Employees\EmployeeController@select2LoadMore');
+
+});
+
 //Auth::routes();
 
 // // Authentication Routes...

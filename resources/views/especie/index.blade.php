@@ -15,7 +15,9 @@
                                             <h3 class="text-center">Nuevo Registro</h3>
                                         </div>
                                         <hr>
-                                        <form action="#" method="post" novalidate="novalidate">
+                                        <form action="especie/save" method="post" novalidate="novalidate">
+                                            @method('POST')
+                                            @csrf
 {{--                                             <div class="form-group text-center">
                                                 <ul class="list-inline">
                                                     <li class="list-inline-item"><i class="text-muted fa fa-cc-visa fa-2x"></i></li>
@@ -26,16 +28,16 @@
                                             </div> --}}
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Nombre de la Especie</label>
-                                                <input id="cc-payment" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
+                                                <input id="cc-payment" name="nombre" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
                                             </div>
                                             <div class="form-group has-success">
                                                 <label for="cc-name" class="control-label mb-1">Latitud</label>
-                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name">
+                                                <input id="cc-name" name="latitud" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name">
                                                 <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-number" class="control-label mb-1">Longitud</label>
-                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true" data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number">
+                                                <input id="cc-number" name="longitud" type="tel" class="form-control cc-number identified visa" value="" data-val="true" data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number">
                                                 <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                                             </div>
 {{--                                             <div class="row">
@@ -64,6 +66,8 @@
                                                 </button>
                                             </div>
                                         </form>
+
+
                                     </div>
                                 </div>
 
@@ -72,5 +76,44 @@
     </div><!--/.col-->
 
 </div>
+
+
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="box-title">Especies</h4>
+                                </div>
+                                <div class="card-body--">
+                                    <div class="table-stats order-table ov-h">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th class="serial">#</th>
+                                                    <th>ID</th>
+                                                    <th>Nombre</th>
+                                                    <th>Latitud</th>
+                                                    <th>Longitud</th>
+                                                    <th>Elimar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="serial">1.</td>
+                                                    <td> #5469 </td>
+                                                    <td>  <span class="name">Louis Stanley</span> </td>
+                                                    <td> <span class="product">iMax</span> </td>
+                                                    <td><span class="count">231</span></td>
+                                                    <td>
+                                                        <span class="badge badge-complete">Activo</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- /.table-stats -->
+                                </div>
+                            </div> <!-- /.card -->
+                        </div>  <!-- /.col-lg-8 -->
+                    </div>
               
 @endsection

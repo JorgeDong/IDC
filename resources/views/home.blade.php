@@ -285,5 +285,14 @@
             <!-- .animated -->
 
         <!-- /.content -->
+
+        <script type="text/javascript">
+// boolean outputs "" if false, "1" if true
+var bool = '<?php echo $data ?>'; 
+
+// numeric value, both with and without quotes
+console.log(bool);
+
+</script>
 @endsection
 

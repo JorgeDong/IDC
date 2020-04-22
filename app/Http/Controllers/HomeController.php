@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Info;
+use App\DataSigFox;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = DataSigFox::all();
+        return view('home',compact('data'));
+        //return $data;
     }
 }

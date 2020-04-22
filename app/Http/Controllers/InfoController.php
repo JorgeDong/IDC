@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Info;
+use App\DataSigFox;
 use Illuminate\Http\Request;
 
 class InfoController extends Controller
@@ -20,6 +21,12 @@ class InfoController extends Controller
 
     public function registro_especie(){
         return view('especie/index');
+    }
+
+    public function especie_save(Request $request){
+        
+        return $request;
+
     }
 
     public function mapa(){
@@ -44,17 +51,32 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
-            $info = new Info;
+        //$info = new Info;
             
  
-	       // $cadena = $request->device;
+	// $cadena = $request->device;
 	//	$cadena +=  $request->hum;
 	//	$cadena += $request->temp;
-		$info->data = $request->getContent();
+		//$info->data = $request->getContent();
 
-            	$info->save();
+        //$info->save();
 
-	 return response()->json($info);
+        // Guardar Ordenado 
+
+        $data = new DataSigFox;
+
+        $data->device = $request->device;
+        $data->hum = $request->hum;
+        $data->temp = $request->temp;
+        $data->shum = $request->shum;
+        $data->stemp = $request->stemp;
+        $data->bateria = $request->bateria;
+        $data->lat =  $request->lat;
+        $data->lng =  $request->lng;
+
+        $data->save();
+
+	 return response()->json($data);
    }
 
     /**
