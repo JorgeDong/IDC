@@ -28,6 +28,22 @@
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
+
+       {{--  <link href="{{ asset('assets/nuevo/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/nuevo/style.css') }}"  rel="stylesheet">
+        <link href="{{ asset('assets/nuevo/font-awesome/css/font-awesome.min.css') }}"  rel="stylesheet"> --}}
+        <!-- scripts -->
+        
+        <!--[if lt IE 9 ]> 
+        <script src="/assets/js/html5shiv.min.js"></script>
+        <script src="/assets/js/respond.min.js"></script>
+        <![endif]-->
+        
+        <!--script src="/assets/js/ "></script-->
+        {{-- <script src="{{ asset('assets/nuevo/js/jquery-1.12.4.min.js') }}"  ></script>
+        <script src="{{ asset('assets/nuevo/js/bootstrap.min.js') }}"></script> --}}
+
+
    <style>
     #weatherWidget .currentDesc {
         color: #ffffff!important;

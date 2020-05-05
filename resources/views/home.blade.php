@@ -1,5 +1,52 @@
 @extends('layouts.app')
 @section('content')
+<script>
+            $(function () {
+                // #sidebar-toggle-button
+                $('#sidebar-toggle-button').on('click', function () {
+                        $('#sidebar').toggleClass('sidebar-toggle');
+                        $('#page-content-wrapper').toggleClass('page-content-toggle');  
+                        fireResize();                   
+                });
+                
+                // sidebar collapse behavior
+                $('#sidebar').on('show.bs.collapse', function () {
+                    $('#sidebar').find('.collapse.in').collapse('hide');
+                });
+                
+                // To make current link active
+                var pageURL = $(location).attr('href');
+                var URLSplits = pageURL.split('/');
+
+                //console.log(pageURL + "; " + URLSplits.length);
+                //$(".sub-menu .collapse .in").removeClass("in");
+
+                if (URLSplits.length === 5) {
+                    var routeURL = '/' + URLSplits[URLSplits.length - 2] + '/' + URLSplits[URLSplits.length - 1];
+                    var activeNestedList = $('.sub-menu > li > a[href="' + routeURL + '"]').parent();
+
+                    if (activeNestedList.length !== 0 && !activeNestedList.hasClass('active')) {
+                        $('.sub-menu > li').removeClass('active');
+                        activeNestedList.addClass('active');
+                        activeNestedList.parent().addClass("in");
+                    }
+                }
+
+                function fireResize() {
+                    if (document.createEvent) { // W3C
+                        var ev = document.createEvent('Event');
+                        ev.initEvent('resize', true, true);
+                        window.dispatchEvent(ev);
+                    }
+                    else { // IE
+                        element = document.documentElement;
+                        var event = document.createEventObject();
+                        element.fireEvent("onresize", event);
+                    }
+                }
+            })
+        </script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
@@ -13,7 +60,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">#<span class="count">23569</span></div>
+                                            <div class="stat-text">#<span class="count">0</span></div>
                                             <div class="stat-heading">Arboles</div>
                                         </div>
                                     </div>
@@ -31,7 +78,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">25</span></div>
+                                            <div class="stat-text"><span class="count">1</span></div>
                                             <div class="stat-heading">Dispositivos</div>
                                         </div>
                                     </div>
@@ -49,7 +96,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">33</span>%</div>
+                                            <div class="stat-text"><span class="count">25</span>%</div>
                                             <div class="stat-heading">Humedad Actual</div>
                                         </div>
                                     </div>
@@ -148,10 +195,10 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="serial">1.</td>
-                                                    <td> #5469 </td>
-                                                    <td>  <span class="name">Louis Stanley</span> </td>
-                                                    <td> <span class="product">iMax</span> </td>
-                                                    <td><span class="count">231</span></td>
+                                                    <td> #413E16 </td>
+                                                    <td>  <span class="name">Devkit_413E16</span> </td>
+                                                    <td> <span class="product">SigFox</span> </td>
+                                                    <td><span class="count">89</span>%</td>
                                                     <td>
                                                         <span class="badge badge-complete">Activo</span>
                                                     </td>
@@ -178,7 +225,7 @@
                                 <div class="col-lg-6 col-xl-12">
                                     <div class="card bg-flat-color-3  ">
                                         <div class="card-body">
-                                            <h4 class="card-title m-0  white-color ">Marzo 2020</h4>
+                                            <h4 class="card-title m-0  white-color ">Mayo 2020</h4>
                                         </div>
                                          <div class="card-body">
                                              <div id="flotLine5" class="flot-line"></div>
@@ -187,6 +234,84 @@
                                 </div>
                             </div>
                         </div> <!-- /.col-md-4 -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                        <div class="card">
+                                                    <div class="card" style="width: 18rem;">
+                          {{-- <img class="card-img-top" src="https://c.tadst.com/gfx/1200x630/calendar.png?1" alt="Card image cap"> --}}
+                          <div class="card-body">
+                            <h5 class="card-title">Busqueda Especifica</h5>
+                            <form>
+                          <div class="form-group">
+                                <label for="start">Fecha:</label>
+                                <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </form>
+                          </div>
+                        </div>
+                        </div><!-- /.card -->
+                        </div>
+
+                        
+
+{{-- <div id="curve_chart" style="width: 400 px; height: 150px"></div> --}}
+                     <div class="col-md-9 col-lg-9">
+                        <div class="card">
+                            <div id="curve_chart" style="width: 400 px; height: 400px"></div>
+                        </div><!-- /.card -->
+                    </div>
+
+                    </div>
+                     <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                        <div class="card">
+                                                    <div class="card" style="width: 18rem;">
+                          {{-- <img class="card-img-top" src="https://c.tadst.com/gfx/1200x630/calendar.png?1" alt="Card image cap"> --}}
+                          <div class="card-body">
+                            <h5 class="card-title">Busqueda Comparativa</h5>
+                            <form>
+                          <div class="form-group">
+                                <label for="start">Fecha Inicio:</label>
+                                <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                          </div>
+                          <div class="form-group">
+                                <label for="start">Fecha Final:</label>
+                                <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" checked>
+                            <label class="form-check-label" for="exampleCheck1">Humedad Suelo</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Humedad</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Temperatura Suelo</label>
+                          </div>
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Temperatura</label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </form>
+                          </div>
+                        </div>
+                        </div><!-- /.card -->
+                        </div>
+
+                        
+
+{{-- <div id="curve_chart" style="width: 400 px; height: 150px"></div> --}}
+                     <div class="col-md-9 col-lg-9">
+                        <div class="card">
+                            <div id="barchart_values" style="width: 400px; height: 400px;"></div>
+                        </div><!-- /.card -->
+                    </div>
+
                     </div>
                 </div>
                 <!-- /.orders -->
@@ -216,7 +341,8 @@
                             <h4 class="weather-title box-title">Temperatura</h4>
                             <div class="card-body">
                                 <div class="weather-widget">
-                                    <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
+                                    <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="Temperatura" data-label_2="
+                                    " data-theme="original" >NEW YORK WEATHER</a>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
@@ -294,5 +420,70 @@ var bool = '<?php echo $data ?>';
 console.log(bool);
 
 </script>
+
+
+
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Fecha', 'Humedad', 'Humedad Suelo','Temperatura','Temperatura Suelo'],
+          ['01/05/2020',  30,      29,            27,           30],
+          ['30/05/2020',  35,      30,             29,          35],
+          ['29/05/2020',  32,       32,            30,           35],
+          ['28/05/2020',  29,      26,              27,            36]
+        ]);
+
+        var options = {
+          title: 'Busqueda Especifica',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+    <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "Density", { role: "style" } ],
+        ["05/05/2020", 29.5, "blue"],
+        ["01/05/2020", 28.3, "silver"],
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Comparacion",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+
+
+
+
 @endsection
+
+
 

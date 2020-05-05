@@ -100,10 +100,10 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="serial">1.</td>
-                                                    <td> #5469 </td>
-                                                    <td>  <span class="name">Louis Stanley</span> </td>
-                                                    <td> <span class="product">iMax</span> </td>
-                                                    <td><span class="count">231</span></td>
+                                                    <td> #0001 </td>
+                                                    <td>  <span class="name">Encino</span> </td>
+                                                    <td> <span class="product">40.75793</span> </td>
+                                                    <td><span class="product">-73.98551</span></td>
                                                     <td>
                                                         <span class="badge badge-complete">Activo</span>
                                                     </td>
